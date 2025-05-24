@@ -1,0 +1,252 @@
+// Map
+var map = L.map("map").setView([56.462002, -2.9707], 8);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+
+// markers
+const markerData = [
+  {
+    coords: [56.4652981, -2.8769442],
+    name: "Fisherman's Tavern",
+    details: "Broughty Ferry",
+    timing: "Thursdays from 20:30",
+    googleMapsUrl: "https://maps.app.goo.gl/uSEbHwgwUdeqYbmZA",
+  },
+  {
+    coords: [56.459166, -2.9715442],
+    name: "The Bank Bar",
+    details: "Bluegrass Sessions<br>Dundee",
+    timing: "Mondays from 19:00",
+    googleMapsUrl: "https://maps.app.goo.gl/ukeFv3kwmz9Qq8vS6",
+  },
+  {
+    coords: [56.312566477316835, -3.5885853588661374],
+    name: "Dunning Hotel",
+    details: "Dunning, Perthshire",
+    timing: "Mondays from 19:45",
+    websiteUrl: "https://www.thedunninghotel.com",
+    googleMapsUrl: "https://maps.app.goo.gl/uBAuabBWPNxDCm5i8",
+  },
+  {
+    coords: [56.45105349000938, -2.8800044993231118],
+    name: "Cobbies Inn",
+    details: "Tayport",
+    timing: "Last Tuesday of each month from 19:30/20:00",
+    websiteUrl: "https://www.cobbiesinn.co.uk/index.htm",
+    googleMapsUrl: "https://maps.app.goo.gl/eLKgD21RndNZXQ728",
+  },
+  {
+    coords: [56.4562043, -2.993023],
+    name: "The Speedwell Bar",
+    details: "Dundee",
+    timing: "Tuesdays from 21:30",
+    websiteUrl: "https://speedwellbar.co.uk",
+    googleMapsUrl: "https://maps.app.goo.gl/mej7U7MU4jshgPKx7",
+  },
+  {
+    coords: [56.3385392, -2.8013225],
+    name: "Whey Pat Tavern",
+    details: "St. Andrews",
+    timing: "Tuesdays from 21:30",
+    websiteUrl: "https://www.belhaven.co.uk/pubs/fife/whey-pat-tavern",
+    googleMapsUrl: "https://maps.app.goo.gl/rFBzd8NzwqVS4ue67",
+  },
+  {
+    coords: [56.6726792, -3.0044654],
+    name: "Three Bellies Brae",
+    details: "Kirriemuir",
+    timing: "Tuesdays from 19:30",
+    websiteUrl: "https://www.facebook.com/3Bellies",
+    googleMapsUrl: "https://maps.app.goo.gl/V2zTCPPRznbmo6pB8",
+  },
+  {
+    coords: [56.3455184, -2.8237365],
+    name: "Balgove Larder (Night Market)",
+    details: "St. Andrews",
+    timing: "First Tuesday of each month from 17:30",
+    websiteUrl: "https://www.balgovelarder.com",
+    googleMapsUrl: "https://maps.app.goo.gl/b452cVWqVqD3a7iJ6",
+  },
+  {
+    coords: [56.5006573, -2.722114],
+    name: "The Stag's Head Inn",
+    details: "Carnoustie",
+    timing: "(Most) Wednesdays from 8.30pm",
+    websiteUrl: "https://www.facebook.com/TheStagsHeadCarnoustie/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/kxAgXPsEzsPxygts5",
+  },
+  {
+    coords: [56.349380089023, -3.40538508738],
+    name: "The Cypress Inn",
+    details: "Bridge of Earn",
+    timing: "Wednesdays (Time not known)",
+    websiteUrl: "https://www.facebook.com/TheStagsHeadCarnoustie/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/ESBuQXrw3fBGccLX6",
+  },
+  {
+    coords: [56.46041774184, -2.99398711236],
+    name: "The Balgay Hill Bar",
+    details: "Dundee",
+    timing: "Wednesdays from 20:30",
+    websiteUrl: "https://www.facebook.com/balgay/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/FhvS3axNSbYXc5QY9",
+  },
+  {
+    coords: [56.637012593, -2.667530735850],
+    name: "The Railway Inn",
+    details: "Friockheim, Angus",
+    timing: "Every second Wednesday from 19:45",
+    websiteUrl: "https://www.facebook.com/railwayfriockheim",
+    googleMapsUrl: "https://maps.app.goo.gl/aQGgqb4EkAFW4wZs7",
+  },
+  {
+    coords: [56.276654555912444, -3.1226693120409057],
+    name: "The Golf Inn",
+    details: "Ladybank",
+    timing: "Fortnightly on Wednesdays from 19:30<br>2nd Sunday of each month from 15:00",
+    websiteUrl: "https://golfinnladybank.com",
+    googleMapsUrl: "https://maps.app.goo.gl/g2mQC7BMgeetkNfF8",
+  },
+  {
+    coords: [56.437965705683375, -2.943316904426461],
+    name: "The Brig o' Tay (Upstairs)",
+    details: "Newport-on-Tay",
+    timing: "Thursdays from 19.30",
+    websiteUrl: "https://www.facebook.com/brigotay.newport/",
+    googleMapsUrl: "https://maps.app.goo.gl/hnbWPqG8TVGbsqHs5",
+  },
+  {
+    coords: [56.56509919118195, -3.584440374414513],
+    name: "The Taybank",
+    details: "Dunkeld",
+    timing: "Thursdays from 20:00",
+    websiteUrl: "https://www.thetaybank.co.uk",
+    googleMapsUrl: "https://maps.app.goo.gl/H3noMcuC78V6bwnU9",
+  },
+  {
+    coords: [56.56654232024078, -3.585721303012059],
+    name: "The Royal Dunkeld Hotel",
+    details: "Dunkeld",
+    timing: "Thursdays from 19:00",
+    websiteUrl: "https://royaldunkeld.co.uk",
+    googleMapsUrl: "https://maps.app.goo.gl/pfEzuWcqxiJckrZU8",
+  },
+  {
+    coords: [56.053555104841145, -3.3020148638085516],
+    name: "The Foresters Arms",
+    details: "Aberdour",
+    timing: "Fortnightly on Thursdays from 20:30",
+    websiteUrl: "https://www.facebook.com/ForestersArmsNew/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/KMp9SDwNV3JS4tPj9",
+  },
+  {
+    coords: [56.034875301900534, -3.489294769688442],
+    name: "The Ship Inn",
+    details: "Limekilns",
+    timing: "Thursdays from 20:00",
+    websiteUrl: "https://www.the-ship-inn-limekilns.co.uk",
+    googleMapsUrl: "https://maps.app.goo.gl/XFRGZ1kJzfgZphxF8",
+  },
+  {
+    coords: [56.184863270130144, -3.126414135938461],
+    name: "The Balgonie Arms",
+    details: "Coaltown of Balgonie",
+    timing: "1st Friday of each month from 20:00<br>Sundays 20:30",
+    websiteUrl: "https://www.balgoniearms-fife.co.uk",
+    googleMapsUrl: "https://maps.app.goo.gl/YDtgYf45QYPpp8H59",
+  },
+  {
+    coords: [56.55641252246827, -2.580983462543601],
+    name: "The Commercial Inn",
+    details: "Shorehead, Arbroath",
+    timing: "Fridays, 19:30",
+    websiteUrl: "https://www.facebook.com/p/The-Commercial-Inn-Arbroath-100057315015434/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/htEECHuBmu1iCyNw9",
+  },
+  {
+    coords: [56.731094411076604, -2.6544215429359834],
+    name: "The Caledonian Hotel",
+    details: "Brechin",
+    timing: "Last Friday of the month from 21:00",
+    websiteUrl: "https://www.facebook.com/p/The-Caledonian-100057110154164/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/SWPKwzosxfaUrbiQA",
+  },
+  {
+    coords: [56.59197629624533, -3.3367180548692636],
+    name: "The Ericht Alehouse",
+    details: "Blairgowrie",
+    timing: "1st and 3rd Sundays of each month (Time unknown)",
+    websiteUrl: "https://www.tripadvisor.co.uk/Attraction_Review-g191250-d5962584-Reviews-The_Ericht_Alehouse-Blairgowrie_Perth_and_Kinross_Scotland.html",
+    googleMapsUrl: "https://maps.app.goo.gl/kEnE5NJ8Frv4J73NA",
+  },
+  {
+    coords: [56.56018980501811, -2.579159404704504],
+    name: "The Abbey Inn",
+    details: "Arbroath",
+    timing: "Last Sunday of every month 14:30-17:30",
+    websiteUrl: "https://www.facebook.com/pages/Abbey-Inn/128471277203962",
+    googleMapsUrl: "https://maps.app.goo.gl/4gCbjKxzAFe7mmmGA",
+  },
+  {
+    coords: [56.47624640474221, -3.0236203650105375],
+    name: "The Whip Inn",
+    details: "Lochee, Dundee",
+    timing: "3rd Sunday of each month from 14:00 until 17:00",
+    websiteUrl: "https://www.facebook.com/WhipInn/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/1ZzhVh8DqbgLe158A",
+  },
+  {
+    coords: [56.46183928935737, -2.967988414713488],
+    name: "The Bush Bar",
+    details: "Seagate, Dundee",
+    timing: "Last Sunday of each month 14:00 until 16:00",
+    websiteUrl: "https://www.facebook.com/thebushbar1884/?locale=en_GB",
+    googleMapsUrl: "https://maps.app.goo.gl/Vzndjhn9mnNzfg6h6",
+  },
+  {
+    coords: [55.9682417853091, -3.174075171601828],
+    name: "Leith Depot (Function Room)",
+    details: "Intermediate Trad Session<br>Edinburgh",
+    timing: "Last Sunday of each month 14:00 until 16:00",
+    websiteUrl: "https://leithdepot.com",
+    googleMapsUrl: "https://maps.app.goo.gl/gudhjDE44Hmy5JPk8",
+  },
+  {
+    coords: [55.94707058712876, -3.1865216910119667],
+    name: "The Captain's Bar",
+    details: "Edinburgh",
+    timing: "Most days (check Edinburgh Trad Music and Session Hub's Facebook page for details)",
+    websiteUrl: "https://www.captainsedinburgh.com",
+    googleMapsUrl: "https://maps.app.goo.gl/E3sb6WG6VPEp4u8P9",
+  },
+  {
+    coords: [55.94606632827573, -3.191283940875853],
+    name: "Sandy's Bells",
+    details: "Edinburgh",
+    timing: "Time unknown (check Edinburgh Trad Music and Session Hub's Facebook page for details)",
+    websiteUrl: "https://sandybells.com/music-sessions/",
+    googleMapsUrl: "https://maps.app.goo.gl/jsxygAskm59QeA5J9",
+  },
+  {
+    coords: [55.9508054678149, -3.1824416907043673],
+    name: "Canon’s Gait",
+    details: "Edinburgh",
+    timing: "Every Wednesday evening 21:00-23:00",
+    websiteUrl: "https://www.oldtownpubco.com/our-bars/the-canons-gait/",
+    googleMapsUrl: "https://maps.app.goo.gl/LC73bYFmTZxxpjDL6",
+  },
+];
+
+markerData.forEach(function (data) {
+  let popupContent = `<div class='text-center'><b>${data.name}</b><br>${data.details}<br>${data.timing}`;
+  if (data.websiteUrl) {
+    popupContent += `<br><a href='${data.websiteUrl}' target='_blank' rel='noopener noreferrer'>Website</a>`;
+  }
+  popupContent += `<br><a href='${data.googleMapsUrl}' target='_blank' rel='noopener noreferrer'>Google Maps</a></div>`;
+
+  L.marker(data.coords).addTo(map).bindPopup(popupContent);
+});
