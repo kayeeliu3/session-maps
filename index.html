@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>sessionmap</title>
     <link
       rel="stylesheet"
@@ -39,11 +39,11 @@
     <span class="text-gray-700 dark:text-gray-100">Session<span class="text-green-700 dark:text-green-600">Maps</span>
     </h2>
     <div class="flex flex-col items-center justify-center pt-5">
-        <p class="text-gray-500 dark:text-gray-400 text-sm">Toggle Dark Mode</p>
+        <p class="text-gray-500 dark:text-gray-400 text-sm pb-3 mb-3">Toggle Dark Mode</p>
         <button
         id="theme-toggle"
         type="button"
-        class="mb-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-600 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+        class="mb-3 p-2.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-600 dark:focus:ring-gray-700 rounded-lg text-sm"
       >
         <svg
           id="theme-toggle-dark-icon"
@@ -70,11 +70,14 @@
           ></path>
         </svg>
       </button>
-      <div
-        id="map"
-        class="align-center justify-center h-[30rem] w-[40rem] px-4 rounded-lg shadow-lg"
-      ></div>
     </div>
+    <div class="text-center text-gray-700 dark:text-gray-100 py-10 px-5">Map missing a session you know of? Please <a class="text-sky-300 font-bold" style="text-decoration: underline;" href="https://docs.google.com/forms/d/e/1FAIpQLSfIg-hdzZ0koJ6Nt9eyeHxyGU_UV_HZ9CQMxhuKfTT8SwHO1A/viewform?usp=sharing&ouid=105554662850055988559">click here to fill out a form</a> to let me know.
+      </div>
+    <div
+        id="map"
+        style="height: 600px !important; margin: 25px;"
+        class="align-center justify-center mx-auto mx-5 px-4 py-5 rounded-lg shadow-lg"
+      ></div>
   </body>
 
   <script src="./src/js/main.js"></script>
@@ -89,7 +92,7 @@
           lightSwitch.checked = true;
         }
         lightSwitch.addEventListener("change", () => {
-          const { checked } = lightSwitch;
+          const checked = lightSwitch;
           lightSwitches.forEach((el, n) => {
             if (n !== i) {
               el.checked = checked;
